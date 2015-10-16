@@ -367,7 +367,7 @@ static int socket_accept(int serv_fd) {
 static int socket_send_request(int fd, const struct su_context *ctx) {
 #define write_data(fd, data, data_len)              \
 do {                                                \
-    size_t __len = htonl(data_len);                 \
+    uint32_t __len = htonl(data_len);               \
     __len = write((fd), &__len, sizeof(__len));     \
     if (__len != sizeof(__len)) {                   \
         PLOGE("write(" #data ")");                  \
@@ -679,12 +679,6 @@ int su_main(int argc, char *argv[], int need_client) {
         unsetenv(*cp);
         cp++;
     }
-
-    /*
-     * set LD_LIBRARY_PATH if the linker has wiped out it due to we're suid.
-     * This occurs on Android 4.0+
-     */
-    setenv("LD_LIBRARY_PATH", "/vendor/lib:/system/lib", 0);
 
     LOGD("su invoked.");
 
