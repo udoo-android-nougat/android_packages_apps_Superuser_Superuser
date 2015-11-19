@@ -35,7 +35,7 @@
     </style>
 
     <style name="SuperuserLight" parent="@style/AppTheme">
-        <item name="bottomButtonBar">@color/background_dark</item>
+        <item name="bottomButtonBar">@color/holo_blue_dark</item>
         <item name="bottomButtonBarText">?android:attr/textColorPrimaryInverse</item>
         
         <item name="toggleIcon">@drawable/ic_toggle</item>
